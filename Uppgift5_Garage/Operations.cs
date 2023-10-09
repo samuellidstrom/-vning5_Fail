@@ -1,18 +1,24 @@
 ﻿using Uppgift5_Garage.Entities;
 using Uppgift5_Garage.Storage;
+using Uppgift5_Garage;
+
 
 namespace Uppgift5_Garage
 {
     internal class Operations
     {
         private Garage garage = null!;
+        //private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
+        bool garageExist = false;
+        UserInterface userInterface = new UserInterface();
 
         internal void Run()
         {
 
 
             Initialize();
+            userInterface.MainMenu(garageExist);
             Execute();
             
             
@@ -24,7 +30,7 @@ namespace Uppgift5_Garage
             do 
             {
                 //här körs programmet när objekten skapats upp.
-                DrawGarage();
+                userInterface.DrawGarage(garage, garage.vehicleList);
                 //Show Menu + Information
 
                 //Get command
@@ -42,37 +48,37 @@ namespace Uppgift5_Garage
             var keyPressed = Console.ReadKey();
         }
 
-        private void DrawGarage()
-        {
+        //private void DrawGarage()
+        //{
 
-            Console.SetCursorPosition(0, 10);
-            Console.WriteLine("Garage Status:");
-            Console.WriteLine($"Capacity: {garage.Size} slots | Free lots: {garage.Size - garage.vehicles.Count}");
-            for (int spotPosition = 0; spotPosition < garage.Size; spotPosition++)
-            {
-                ParkingSpot parkingSpot = garage.GetSpot(spotPosition);
-                IHandler space = parkingSpot;
-                ArgumentNullException.ThrowIfNull(parkingSpot, nameof(parkingSpot));
+            //Console.SetCursorPosition(0, 10);
+            //Console.WriteLine("Garage Status:");
+            //Console.WriteLine($"Capacity: {garage.Size} slots | Free lots: {garage.Size - garage.vehicles.Count}");
+            //for (int spotPosition = 0; spotPosition < garage.Size; spotPosition++)
+            //{
+            //    ParkingSpot parkingSpot = garage.GetSpot(spotPosition);
+            //    IHandler space = parkingSpot;
+            //    ArgumentNullException.ThrowIfNull(parkingSpot, nameof(parkingSpot));
 
-                foreach (var vehicle in garage.vehicles)
-                {
-                    if (vehicle.VehiclePosition == spotPosition)
-                    {
-                        space = vehicle;
-                        break;
-                    }
-                }
-                Console.ForegroundColor = space.SpotColor;
-                Console.Write(space.Symbol);
-            }
-            Console.ForegroundColor= ConsoleColor.White;
-        }
+            //    foreach (var vehicle in garage.vehicles)
+            //    {
+            //        if (vehicle.VehiclePosition == spotPosition)
+            //        {
+            //            space = vehicle;
+            //            break;
+            //        }
+            //    }
+            //    Console.ForegroundColor = space.SpotColor;
+            //    Console.Write(space.Symbol);
+            //}
+            //Console.ForegroundColor= ConsoleColor.White;
+        //}
 
         public void Initialize()
         {
             //ToDo: Fixa så man kan skriva in hur stort garage man vill ha
              
-            garage = new Garage(10);
+            garage = new Garage(10);            
             //vehicle = new Vehicle();
             var vSpot = garage.GetSpot(0);
 
@@ -82,10 +88,10 @@ namespace Uppgift5_Garage
             Vehicle vehicle3 = new Car { Color = "Yellow", LicensePlate = "Agd765", NoOfWheels = 4, FuleType = "Diesel", VehiclePosition = 6 };
             Vehicle vehicle4 = new Spaceship { Color = "Silver", LicensePlate = "Gie572", HomePlanet = "Uranus" , VehiclePosition = 7 };
 
-            garage.vehicles.Add(vehicle1);
-            garage.vehicles.Add(vehicle2);
-            garage.vehicles.Add(vehicle3);
-            garage.vehicles.Add(vehicle4);
+            garage.vehicleList.Add(vehicle1);
+            garage.vehicleList.Add(vehicle2);
+            garage.vehicleList.Add(vehicle3);
+            garage.vehicleList.Add(vehicle4);
             //Airplane airplane = new Airplane();
             //garage.vehicles.Add(airplane);
 

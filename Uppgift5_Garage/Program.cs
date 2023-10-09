@@ -7,17 +7,18 @@ namespace Uppgift5_Garage
 {
     public class Program
     {
-        
+
         //private static IUI ui = new UserInterface();
         //private List<Vehicle> allVehicles = new List<Vehicle>();
         //private static UserInterface userInterface = new UserInterface();
 
+        
         static void Main(string[] args)
         {
-            //UserInterface userInterface = new UserInterface();
+
             Operations operations = new Operations();
-            operations.Run(); 
-           
+            operations.Run();
+            
             Console.WriteLine("Program avslutat");
             Console.ReadKey();
             Environment.Exit(0);

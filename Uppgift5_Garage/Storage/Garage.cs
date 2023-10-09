@@ -4,13 +4,13 @@ using Uppgift5_Garage.Entities;
 
 namespace Uppgift5_Garage.Storage
 {
-    internal class Garage
+    public class Garage
     {
         private ParkingSpot[] parkingSpots;
 
         public int Size { get; }
 
-        public List<Vehicle> vehicles { get; } = new List<Vehicle>();
+        public List<Vehicle> vehicleList { get; } = new List<Vehicle>();
 
         public Garage(int size)
         {
