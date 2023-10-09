@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Uppgift5_Garage.Entities;
+
 
 namespace Uppgift5_Garage.Storage
 {
@@ -9,8 +9,6 @@ namespace Uppgift5_Garage.Storage
         private ParkingSpot[] parkingSpots;
 
         public int Size { get; }
-
-        public List<Vehicle> vehicleList { get; } = new List<Vehicle>();
 
         public Garage(int size)
         {
