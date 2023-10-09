@@ -163,7 +163,7 @@ namespace Uppgift5_Garage
                     {
                         case '1':
                             MsgClear();
-                            PrintCreateGarage(garageExist);
+                            //PrintCreateGarage(garageExist);
                             break;
                         default:
                             MsgWrongMenuChoice();

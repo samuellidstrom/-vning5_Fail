@@ -3,10 +3,10 @@ namespace Uppgift5_Garage
 {
     internal class Operations
     {
-        //private Garage garage = null!;
+        private Garage garage = null!;
         private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
-        bool garageExist = false;
+        bool garageExist = true;
         UserInterface userInterface = new UserInterface();        
 
         internal void Run()
