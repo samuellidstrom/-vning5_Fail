@@ -13,7 +13,7 @@ namespace Uppgift5_Garage
 
         private int myVar;
 
-        public void MainMenu(bool exist)
+        internal void MainMenu(bool exist)
         {
             Console.SetCursorPosition(0, 4);
             Console.WriteLine("Main Menu:");
@@ -36,7 +36,7 @@ namespace Uppgift5_Garage
             }
         }
 
-        public void DrawGarage(Garage garage, List<Vehicle> vehicleList)
+        internal void DrawGarage(Garage garage, List<Vehicle> vehicleList)
         {
             Console.SetCursorPosition(0, 10);
             Console.WriteLine("Garage Status:");
