@@ -8,8 +8,8 @@ namespace Uppgift5_Garage
     {
 
         //private static IUI ui = new UserInterface();
-        //private List<Vehicle> allVehicles = new List<Vehicle>();
-        //private static UserInterface userInterface = new UserInterface();
+        private List<Vehicle> allVehicles = new List<Vehicle>();
+        private static UserInterface userInterface = new UserInterface();
         
         static void Main(string[] args)
         {

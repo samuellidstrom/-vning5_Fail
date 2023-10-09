@@ -96,6 +96,7 @@ namespace Uppgift5_Garage
             ColorsInfo();
             if (garageExist)
             {
+                // TODO: vi ska ju inte dra in vehicle list här för att kolla hur många som står parkerade..
                 Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - vehicleList.Count}");
                 Console.Write("\n  Parking lot overview:\n   Free:");
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -120,7 +121,7 @@ namespace Uppgift5_Garage
                         }
                     }
                     Console.ForegroundColor = space.SpotColor;
-                    Console.Write(space.Symbol);
+                    Console.Write(space?.Symbol);
                 }
             }
             else { Console.WriteLine("  No garage exists at the moment"); }

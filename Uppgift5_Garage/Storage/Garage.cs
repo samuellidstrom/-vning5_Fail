@@ -4,13 +4,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Uppgift5_Garage.Storage
 {
-    public class Garage//<T>where T : class
+    public class Garage
     {
         private ParkingSpot[] parkingSpots;
-
         public int Size { get; }
-
-
 
         public Garage(int size)
         {

@@ -6,7 +6,7 @@ namespace Uppgift5_Garage
         private Garage garage = null!;
         private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
-        bool garageExist = true;
+        bool garageExist = false;
         UserInterface userInterface = new UserInterface();        
 
         internal void Run()
@@ -38,10 +38,9 @@ namespace Uppgift5_Garage
         {
             //ToDo: Fixa så man kan skriva in hur stort garage man vill ha
 
-            //Garage garage = new Garage(0);            
+            garage = new Garage(10);            
             
-            
-            //var vSpot = garage.GetSpot(0);
+            var vSpot = garage.GetSpot(0);
 
             Vehicle vehicle1 = new Airplane { Color = "Blue", LicensePlate = "Abs452", NoOfEngines = 6, NoOfWheels = 4, VehiclePosition = 1 };
             Vehicle vehicle2 = new Motorcycle { Color = "Red", LicensePlate = "Afw756", NoOfWheels = 2, CylinderVolume = 1600, VehiclePosition = 3 };
