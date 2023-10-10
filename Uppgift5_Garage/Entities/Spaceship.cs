@@ -2,14 +2,13 @@
 {
     internal class Spaceship : Vehicle
     {
-        //public string Color { get; set; }
-        //public string LicensePlate { get; set; }
-        //public int NoOfWheels { get; set; }
-        //public int Length { get; set; }
-
         public string HomePlanet { get; set; }
+        public override string AllInfo()
+
+        {
+            return $"{base.AllInfo()} | Home Planet: {HomePlanet}";
+        }
     }
-    
-    
+
 
 }

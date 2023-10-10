@@ -14,10 +14,10 @@ namespace Uppgift5_Garage.Entities
         public virtual string AllInfo()
         {
             //ui.PrintVehicle($"Vehicle typ: {GetType().Name} | Color: {Color} | License Plate: {License Plate}");
-            string returnString = $"Vehicle typ: {GetType().Name} | Color: {Color} | License Plate: {LicensePlate}";
+            string returnString = $"Parking Lot: {VehiclePosition} | Type: {GetType().Name} | Color: {Color} | License Plate: {LicensePlate}"; 
             if (NoOfWheels > 0)
             {
-                returnString = returnString + $"Number of wheels: {NoOfWheels}";
+                returnString = returnString + $" | Number of wheels: {NoOfWheels}";
             }
             return returnString;   
         }

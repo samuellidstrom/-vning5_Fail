@@ -5,8 +5,7 @@
         //public bool Done { get; set; }
 
         public AutoAddVehicles(List<Vehicle> vehicleList)
-        {            
-            
+        {                        
                 Vehicle vehicle1 = new Airplane { Color = "Blue", LicensePlate = "NEV693", NoOfEngines = 6, NoOfWheels = 4, VehiclePosition = 1 };
                 Vehicle vehicle2 = new Motorcycle { Color = "Red", LicensePlate = "BOR622", NoOfWheels = 2, CylinderVolume = 1600, VehiclePosition = 3 };
                 Vehicle vehicle3 = new Car { Color = "Yellow", LicensePlate = "TUW943", NoOfWheels = 4, FuleType = "Diesel", VehiclePosition = 6 };
@@ -19,9 +18,7 @@
                 vehicleList.Add(vehicle3);
                 vehicleList.Add(vehicle4);
                 vehicleList.Add(vehicle5);
-                vehicleList.Add(vehicle6);
-            
-
+                vehicleList.Add(vehicle6);            
         }
 
     }

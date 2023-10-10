@@ -12,9 +12,10 @@ namespace Uppgift5_Garage
         //private static UserInterface userInterface = new UserInterface();
         
         static void Main(string[] args)
-        {                                   
+        {            
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("M A G I C   G A R A G E   M A K E R");        
+            Console.WriteLine("MAGIC  GARAGE  MANAGER");
+            
             Console.WriteLine("\nCreate a garage:");            
             Console.WriteLine("\nPlease enter how many parking lots you want in your garage.");
             int x;

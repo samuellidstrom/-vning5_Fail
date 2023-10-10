@@ -9,19 +9,16 @@ namespace Uppgift5_Garage
         
         public void PrintMainMenu(bool exist)
         {            
-            MenuClear();
+            VisualHandler.MenuClear();
             Console.SetCursorPosition(0, 0);
-            ColorsDefault();
-            Console.WriteLine("M A G I C   G A R A G E   M A K E R");
-            Console.SetCursorPosition(0, 4);
-            Console.SetCursorPosition(1, 2);
-            ColorsDefault();
-            Console.WriteLine("Main Menu");
-            ColorsMenu();
+            VisualHandler.ColorsDefault();
+            Console.WriteLine("MAGIC  GARAGE  MANAGER");
+            Console.WriteLine("\n Main Menu");
+            VisualHandler.ColorsMenu();
             if (exist)
             {
                 Console.WriteLine("  1. List All Parked Vehicles");
-                Console.WriteLine("  2. Add 6 vehicles to the garage.. (cheating)");
+                Console.WriteLine("  2. Add six pre-designed vehicles to the garage");
                 //Console.WriteLine(" 3. Lägg till fordon");
                 //Console.WriteLine(" 4. Ta bort fordon");
                 //Console.WriteLine(" 5. Sätta en kapacitet när nytt garage skapas");
@@ -37,74 +34,27 @@ namespace Uppgift5_Garage
 
             Console.SetCursorPosition(0, 9);
 
-            ColorsDefault();
+            VisualHandler.ColorsDefault();
             Console.WriteLine(" User input:\n");
             Console.WriteLine(" Message to user");
-            //PrintMessage();
-            //Console.WriteLine("Welcome to Magic Garage Maker.");
 
         }
 
-        //public void PrintCreateGarage()
-        //{
-        //    MenuClear();
-        //    ColorsDefault();
-        //    Console.SetCursorPosition(1, 2);
-        //    Console.WriteLine("Create Garage:        ");
-        //    ColorsMenu();
-        //    Console.SetCursorPosition(1, 4);
-        //    Console.Write("                           ");
-        //    Console.SetCursorPosition(1, 4);
-        //    Console.Write(" Number of parking lots:");
-
-        //    while (true)
-        //    {
-        //        ColorsDefault();
-        //        Console.SetCursorPosition(25, 4);
-        //        int x = 0;
-        //        string userInput = Console.ReadLine();
-        //        if (int.TryParse(userInput, out x))
-        //        {
-
-        //            Garage garage = new Garage(x);
-        //            //Vehicle[] garage1 = new Vehicle[x];
-        //            MsgClear();
-        //            PrintMessage();
-        //            Console.WriteLine($"Your new garage contains {x} parking lots.");
-        //            CursorPositionUserInput();
-
-
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            MsgClear();
-        //            PrintMessage();
-        //            Console.WriteLine("Please enter a number.");
-        //        }
-        //    }
-        //}
-
         public void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList)
-        {
-            //IHandler space;
-            //Console.SetCursorPosition(0, 12);
-            //HeadLine();           
-            CursorPositionGarage();
-            ColorsDefault();
+        {          
+            VisualHandler.CursorPositionGarage();
+            VisualHandler.ColorsDefault();
             Console.WriteLine("Garage Status");
-            ColorsInfo();
+            VisualHandler.ColorsInfo();
             if (garageExist)
             {
-                // TODO: vi ska ju inte dra in vehicle list här för att kolla hur många som står parkerade..
-                //Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - vehicleList.Count}");
-                GarageClear();
-                CursorPositionGarage();
+                VisualHandler.GarageClear();
+                VisualHandler.CursorPositionGarage();
                 Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - vehicleList.Count}");
-                Console.Write("\n  Parking lot overview:\n   Free: ");
+                Console.Write("\n  Parking lots overview:\n   Free: ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(" O");
-                ColorsInfo();
+                VisualHandler.ColorsInfo();
                 Console.Write("   Taken: ");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("0\n   ");
@@ -133,13 +83,26 @@ namespace Uppgift5_Garage
         }
         public void PrintVehicle(string message)
         {
+            //TODO:
+            //{
+            //    int y = 20;
+            //    for (int i = 0; i < c
+            //    {
+            //        Console.SetCursorPosition(0, y);
+
+            //        Console.WriteLine();
+            //        y++;
+            //    }
+
+
+            //}            vehi
 
         }
-        public void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone)
-        {
-            CursorPositionUserInput();
+        public void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone, IGarage garage)
+        {            
+            VisualHandler.CursorPositionUserInput();
             Console.WriteLine("                                             ");
-            CursorPositionUserInput();
+            VisualHandler.CursorPositionUserInput();
             string input = Console.ReadLine();
             if (input == null || input == "")
             {
@@ -154,102 +117,47 @@ namespace Uppgift5_Garage
                     switch (inputChar)
                     {
                         case '1':
-                            MsgClear();
+                            VisualHandler.MsgClear();
                             if (allVehicles.Count < 1)
-                            {                              
-                                PrintMessage();
+                            {
+                                VisualHandler.PrintMessage();
                                 Console.WriteLine("Your garage is empty at the moment.");
+                            }
+                            else
+                            {
+                                ListAllVehicles listAllVehicles = new ListAllVehicles(allVehicles, garage);
                             }
                             break;
                         case '2':                                                       
                             if (autoDone.Done == false)
                             {                                
                                 AutoAddVehicles autoAddVehicles = new AutoAddVehicles(allVehicles);
-                                PrintMessage();
+                                VisualHandler.PrintMessage();
                                 Console.WriteLine("You sucsessfully added six vehicles to the garage.");
                                 autoDone.Done = true;
                             }                            
                             else if (autoDone.Done == true)
                             {
-                               PrintMessage();
-                                Console.WriteLine("Auto-generated vehicles already added.");
+                               VisualHandler.PrintMessage();
+                               Console.WriteLine("Auto-generated vehicles already added.");
                             }                                                          
                             break;
-
                         default:
                             MsgWrongMenuChoice();
                             break;
                     }
                 }
-
                 else
                 {
                     MsgWrongMenuChoice();
                 }
-
-
-            }
-
-        }
-
-        public void MenuClear()
-        {
-            for (int i = 1; i < 11; i++)
-            {
-                Console.SetCursorPosition(0, i);
-                Console.Write("                                                ");
             }
         }
-        public void MsgClear()
-        {
-            Console.SetCursorPosition(2, 12);
-            Console.WriteLine("                                                                     ");
-        }
-
-        public void GarageClear()
-        {
-            for (int i = 14; i < 18; i++)
-            {
-                Console.SetCursorPosition(0, i);
-                Console.Write("                                                ");
-            }
-        }
+ 
         public void MsgWrongMenuChoice()
         {
-            PrintMessage();
+            VisualHandler.PrintMessage();
             Console.WriteLine("Please select something from the menu.");
-        }
-
-        public void CursorPositionUserInput()
-        {
-            Console.SetCursorPosition(13, 9);
-        }
-        public void CursorPositionGarage()
-        {
-            Console.SetCursorPosition(1, 14);
-        }
-        public void PrintMessage()
-        {
-            MsgClear();
-            Console.SetCursorPosition(2, 12);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-        }
-
-        public void ColorsDefault()
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        public void ColorsInfo()
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Cyan;
-        }
-        public void ColorsMenu()
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-        }
+        }       
     }
 }
