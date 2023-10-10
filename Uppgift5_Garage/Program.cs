@@ -5,17 +5,11 @@ using System.Text.RegularExpressions;
 namespace Uppgift5_Garage
 {
     public class Program
-    {
-
-        //private static IUI ui = new UserInterface();
-        //private List<Vehicle> allVehicles = new List<Vehicle>();
-        //private static UserInterface userInterface = new UserInterface();
-        
+    {        
         static void Main(string[] args)
         {            
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("MAGIC  GARAGE  MANAGER");
-            
+            Console.WriteLine("MAGIC  GARAGE  MANAGER");            
             Console.WriteLine("\nCreate a garage:");            
             Console.WriteLine("\nPlease enter how many parking lots you want in your garage.");
             int x;
@@ -23,8 +17,7 @@ namespace Uppgift5_Garage
             {
                 Console.Write("User Input: ");
                 string gSize = Console.ReadLine();
-                
-                
+                                
                 if (int.TryParse(gSize, out x))
                 {
                     Console.WriteLine($"\nYour new garage contains {x} parking lots.\n");
@@ -43,12 +36,6 @@ namespace Uppgift5_Garage
 
             Console.Clear();
             operations.Run(x);
-            
-            Console.WriteLine("Program avslutat");
-            Console.ReadKey();
-            Environment.Exit(0);
-           
-            Console.ReadKey();
         }
     }
 }

@@ -5,7 +5,6 @@
         void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList);
         void MsgWrongMenuChoice();
         void PrintMainMenu(bool exist);
-        void PrintVehicle(string message);
         void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone, IGarage garage);
     }
 }

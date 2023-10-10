@@ -4,11 +4,8 @@
     {
         public string HomePlanet { get; set; }
         public override string AllInfo()
-
         {
             return $"{base.AllInfo()} | Home Planet: {HomePlanet}";
         }
     }
-
-
 }

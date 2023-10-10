@@ -1,14 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-
 namespace Uppgift5_Garage.Storage
 {
     public class Garage : IGarage
     {
         private ParkingLot[] parkingLots;
         public int Size { get; }
-
         public Garage(int size)
         {
             Size = size;

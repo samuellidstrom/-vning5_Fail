@@ -4,11 +4,6 @@ namespace Uppgift5_Garage
 {
     public class VisualHandler
     {
-        //public VisualHandler()
-        //{
-            
-        //}
-
         public static void PrintMessage()
         {
             MsgClear();

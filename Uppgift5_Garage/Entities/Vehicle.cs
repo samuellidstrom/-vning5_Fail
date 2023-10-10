@@ -12,21 +12,13 @@ namespace Uppgift5_Garage.Entities
         public int VehiclePosition { get; set; }
 
         public virtual string AllInfo()
-        {
-            //ui.PrintVehicle($"Vehicle typ: {GetType().Name} | Color: {Color} | License Plate: {License Plate}");
-            string returnString = $"Parking Lot: {VehiclePosition} | Type: {GetType().Name} | Color: {Color} | License Plate: {LicensePlate}"; 
+        {            
+            string returnString = $"Parking Lot: {VehiclePosition+1} | Type: {GetType().Name} | Color: {Color} | License Plate: {LicensePlate}"; 
             if (NoOfWheels > 0)
             {
                 returnString = returnString + $" | Number of wheels: {NoOfWheels}";
             }
             return returnString;   
         }
-
-        //public Vehicle(ParkingSpot parkingSpot, string symbol)
-        //{
-        //    Position = parkingSpot;
-        //    //Symbol = symbol;
-        //    //SpotColor = ConsoleColor.Red;
-        //}
     }
 }

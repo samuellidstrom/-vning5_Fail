@@ -4,15 +4,11 @@ namespace Uppgift5_Garage
     internal class Operations
     {
         public IGarage garage;
-        //public IGarage garage = null!;
         private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
         bool garageExist = true;
         public IUI userInterface;
         public AutoDone autoDone = new AutoDone();
-
-        //AutoAddVehicles autoAddVehicles = new AutoAddVehicles();
-        //private IUI userInterface = new UserInterface();
         public void Run(int x)
         {
             autoDone.Done = false;
@@ -20,7 +16,6 @@ namespace Uppgift5_Garage
             Initialize(x);
             Execute();
         }
-
         public Operations(IUI userInterface)
         {
             this.userInterface = userInterface;

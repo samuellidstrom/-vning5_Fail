@@ -5,8 +5,7 @@ using Uppgift5_Garage.Entities;
 namespace Uppgift5_Garage
 {
     public class UserInterface : IUI        
-    {
-        
+    {        
         public void PrintMainMenu(bool exist)
         {            
             VisualHandler.MenuClear();
@@ -31,15 +30,11 @@ namespace Uppgift5_Garage
             {
                 Console.WriteLine("  1. Create garage");
             }
-
             Console.SetCursorPosition(0, 9);
-
             VisualHandler.ColorsDefault();
             Console.WriteLine(" User input:\n");
             Console.WriteLine(" Message to user");
-
         }
-
         public void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList)
         {          
             VisualHandler.CursorPositionGarage();
@@ -81,23 +76,6 @@ namespace Uppgift5_Garage
 
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public void PrintVehicle(string message)
-        {
-            //TODO:
-            //{
-            //    int y = 20;
-            //    for (int i = 0; i < c
-            //    {
-            //        Console.SetCursorPosition(0, y);
-
-            //        Console.WriteLine();
-            //        y++;
-            //    }
-
-
-            //}            vehi
-
-        }
         public void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone, IGarage garage)
         {            
             VisualHandler.CursorPositionUserInput();
@@ -131,7 +109,7 @@ namespace Uppgift5_Garage
                         case '2':                                                       
                             if (autoDone.Done == false)
                             {                                
-                                AutoAddVehicles autoAddVehicles = new AutoAddVehicles(allVehicles);
+                                AutoAddVehicles autoAddVehicles = new AutoAddVehicles(allVehicles, garage);
                                 VisualHandler.PrintMessage();
                                 Console.WriteLine("You sucsessfully added six vehicles to the garage.");
                                 autoDone.Done = true;
@@ -152,8 +130,7 @@ namespace Uppgift5_Garage
                     MsgWrongMenuChoice();
                 }
             }
-        }
- 
+        } 
         public void MsgWrongMenuChoice()
         {
             VisualHandler.PrintMessage();
