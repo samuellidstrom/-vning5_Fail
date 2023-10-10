@@ -56,15 +56,15 @@ namespace Uppgift5_Garage
 
             //var vSpot = garage.GetSpot(0);
 
-            Vehicle vehicle1 = new Airplane { Color = "Blue", LicensePlate = "Abs452", NoOfEngines = 6, NoOfWheels = 4, VehiclePosition = 1 };
-            Vehicle vehicle2 = new Motorcycle { Color = "Red", LicensePlate = "Afw756", NoOfWheels = 2, CylinderVolume = 1600, VehiclePosition = 3 };
-            Vehicle vehicle3 = new Car { Color = "Yellow", LicensePlate = "Agd765", NoOfWheels = 4, FuleType = "Diesel", VehiclePosition = 6 };
-            Vehicle vehicle4 = new Spaceship { Color = "Silver", LicensePlate = "Gie572", HomePlanet = "Uranus", VehiclePosition = 7 };
+            //Vehicle vehicle1 = new Airplane { Color = "Blue", LicensePlate = "Abs452", NoOfEngines = 6, NoOfWheels = 4, VehiclePosition = 1 };
+            //Vehicle vehicle2 = new Motorcycle { Color = "Red", LicensePlate = "Afw756", NoOfWheels = 2, CylinderVolume = 1600, VehiclePosition = 3 };
+            //Vehicle vehicle3 = new Car { Color = "Yellow", LicensePlate = "Agd765", NoOfWheels = 4, FuleType = "Diesel", VehiclePosition = 6 };
+            //Vehicle vehicle4 = new Spaceship { Color = "Silver", LicensePlate = "Gie572", HomePlanet = "Uranus", VehiclePosition = 7 };
 
-            vehicleList.Add(vehicle1);
-            vehicleList.Add(vehicle2);
-            vehicleList.Add(vehicle3);
-            vehicleList.Add(vehicle4);
+            //vehicleList.Add(vehicle1);
+            //vehicleList.Add(vehicle2);
+            //vehicleList.Add(vehicle3);
+            //vehicleList.Add(vehicle4);
         }
     }
 

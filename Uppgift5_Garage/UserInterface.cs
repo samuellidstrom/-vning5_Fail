@@ -45,45 +45,45 @@ namespace Uppgift5_Garage
 
         }
 
-        public void PrintCreateGarage()
-        {
-            MenuClear();
-            ColorsDefault();
-            Console.SetCursorPosition(1, 2);
-            Console.WriteLine("Create Garage:        ");
-            ColorsMenu();
-            Console.SetCursorPosition(1, 4);
-            Console.Write("                           ");
-            Console.SetCursorPosition(1, 4);
-            Console.Write(" Number of parking lots:");
+        //public void PrintCreateGarage()
+        //{
+        //    MenuClear();
+        //    ColorsDefault();
+        //    Console.SetCursorPosition(1, 2);
+        //    Console.WriteLine("Create Garage:        ");
+        //    ColorsMenu();
+        //    Console.SetCursorPosition(1, 4);
+        //    Console.Write("                           ");
+        //    Console.SetCursorPosition(1, 4);
+        //    Console.Write(" Number of parking lots:");
 
-            while (true)
-            {
-                ColorsDefault();
-                Console.SetCursorPosition(25, 4);
-                int x = 0;
-                string userInput = Console.ReadLine();
-                if (int.TryParse(userInput, out x))
-                {
+        //    while (true)
+        //    {
+        //        ColorsDefault();
+        //        Console.SetCursorPosition(25, 4);
+        //        int x = 0;
+        //        string userInput = Console.ReadLine();
+        //        if (int.TryParse(userInput, out x))
+        //        {
 
-                    Garage garage = new Garage(x);
-                    //Vehicle[] garage1 = new Vehicle[x];
-                    MsgClear();
-                    PrintMessage();
-                    Console.WriteLine($"Your new garage contains {x} parking lots.");
-                    CursorPositionUserInput();
+        //            Garage garage = new Garage(x);
+        //            //Vehicle[] garage1 = new Vehicle[x];
+        //            MsgClear();
+        //            PrintMessage();
+        //            Console.WriteLine($"Your new garage contains {x} parking lots.");
+        //            CursorPositionUserInput();
 
 
-                    break;
-                }
-                else
-                {
-                    MsgClear();
-                    PrintMessage();
-                    Console.WriteLine("Please enter a number.");
-                }
-            }
-        }
+        //            break;
+        //        }
+        //        else
+        //        {
+        //            MsgClear();
+        //            PrintMessage();
+        //            Console.WriteLine("Please enter a number.");
+        //        }
+        //    }
+        //}
 
         public void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList)
         {

@@ -11,7 +11,7 @@
         void MenuClear();
         void MsgClear();
         void MsgWrongMenuChoice();
-        void PrintCreateGarage();
+        //void PrintCreateGarage();
         void PrintMainMenu(bool exist);
         void PrintMessage();
         void PrintVehicle(string message);
