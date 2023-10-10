@@ -9,9 +9,13 @@ namespace Uppgift5_Garage
         private Vehicle vehicle = null!;
         bool garageExist = true;
         public IUI userInterface;
+        public AutoDone autoDone = new AutoDone();
+
+        //AutoAddVehicles autoAddVehicles = new AutoAddVehicles();
         //private IUI userInterface = new UserInterface();
         public void Run(int x)
         {
+            autoDone.Done = false;
             int garageSize = x;
             Initialize(x);
             Execute();
@@ -41,7 +45,8 @@ namespace Uppgift5_Garage
 
                 //Get command
                 //UserInput();
-                userInterface.UnserInput(garageExist);
+                userInterface.UserInput(garageExist, vehicleList, autoDone);
+                
                 //Act
 
                 //Show Menu + Information
@@ -50,8 +55,6 @@ namespace Uppgift5_Garage
 
         public void Initialize(int garageSize)
         {
-            //ToDo: Fixa så man kan skriva in hur stort garage man vill ha
-
             garage = new Garage(garageSize);
 
             //var vSpot = garage.GetSpot(0);

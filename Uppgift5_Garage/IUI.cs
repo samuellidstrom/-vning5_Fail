@@ -15,6 +15,7 @@
         void PrintMainMenu(bool exist);
         void PrintMessage();
         void PrintVehicle(string message);
-        void UnserInput(bool garageExist);
+        void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone);
+
     }
 }

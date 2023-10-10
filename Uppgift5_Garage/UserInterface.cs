@@ -4,11 +4,11 @@ using Uppgift5_Garage.Entities;
 
 namespace Uppgift5_Garage
 {
-    public class UserInterface : IUI
+    public class UserInterface : IUI        
     {
-
+        
         public void PrintMainMenu(bool exist)
-        {
+        {            
             MenuClear();
             Console.SetCursorPosition(0, 0);
             ColorsDefault();
@@ -16,7 +16,7 @@ namespace Uppgift5_Garage
             Console.SetCursorPosition(0, 4);
             Console.SetCursorPosition(1, 2);
             ColorsDefault();
-            Console.WriteLine("Main Menu             ");
+            Console.WriteLine("Main Menu");
             ColorsMenu();
             if (exist)
             {
@@ -97,8 +97,11 @@ namespace Uppgift5_Garage
             if (garageExist)
             {
                 // TODO: vi ska ju inte dra in vehicle list här för att kolla hur många som står parkerade..
+                //Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - vehicleList.Count}");
+                GarageClear();
+                CursorPositionGarage();
                 Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - vehicleList.Count}");
-                Console.Write("\n  Parking lot overview:\n   Free:");
+                Console.Write("\n  Parking lot overview:\n   Free: ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(" O");
                 ColorsInfo();
@@ -111,8 +114,6 @@ namespace Uppgift5_Garage
                     ParkingLot parkingSpot = garage.GetSpot(spotPosition);
                     IHandler space = parkingSpot;
                     ArgumentNullException.ThrowIfNull(parkingSpot, nameof(parkingSpot));
-
-
 
                     foreach (var vehicle in vehicleList)
                     {
@@ -134,7 +135,7 @@ namespace Uppgift5_Garage
         {
 
         }
-        public void UnserInput(bool garageExist)
+        public void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone)
         {
             CursorPositionUserInput();
             Console.WriteLine("                                             ");
@@ -154,25 +155,33 @@ namespace Uppgift5_Garage
                     {
                         case '1':
                             MsgClear();
+                            if (allVehicles.Count < 1)
+                            {                              
+                                PrintMessage();
+                                Console.WriteLine("Your garage is empty at the moment.");
+                            }
                             break;
+                        case '2':                                                       
+                            if (autoDone.Done == false)
+                            {                                
+                                AutoAddVehicles autoAddVehicles = new AutoAddVehicles(allVehicles);
+                                PrintMessage();
+                                Console.WriteLine("You sucsessfully added six vehicles to the garage.");
+                                autoDone.Done = true;
+                            }                            
+                            else if (autoDone.Done == true)
+                            {
+                               PrintMessage();
+                                Console.WriteLine("Auto-generated vehicles already added.");
+                            }                                                          
+                            break;
+
                         default:
                             MsgWrongMenuChoice();
                             break;
                     }
                 }
-                else if (input.Length == 1 && garageExist == false)
-                {
-                    switch (inputChar)
-                    {
-                        case '1':
-                            MsgClear();
-                            //PrintCreateGarage(garageExist);
-                            break;
-                        default:
-                            MsgWrongMenuChoice();
-                            break;
-                    }
-                }
+
                 else
                 {
                     MsgWrongMenuChoice();
@@ -193,8 +202,17 @@ namespace Uppgift5_Garage
         }
         public void MsgClear()
         {
-            PrintMessage();
-            Console.WriteLine("                                                ");
+            Console.SetCursorPosition(2, 12);
+            Console.WriteLine("                                                                     ");
+        }
+
+        public void GarageClear()
+        {
+            for (int i = 14; i < 18; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("                                                ");
+            }
         }
         public void MsgWrongMenuChoice()
         {
@@ -212,8 +230,8 @@ namespace Uppgift5_Garage
         }
         public void PrintMessage()
         {
+            MsgClear();
             Console.SetCursorPosition(2, 12);
-            //MsgClear();
             Console.ForegroundColor = ConsoleColor.Yellow;
         }
 
