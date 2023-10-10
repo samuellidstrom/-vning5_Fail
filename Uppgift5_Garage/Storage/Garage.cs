@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Uppgift5_Garage.Storage
 {
-    public class Garage
+    public class Garage : IGarage
     {
         private ParkingLot[] parkingLots;
         public int Size { get; }
