@@ -4,9 +4,9 @@ using Uppgift5_Garage.Entities;
 
 namespace Uppgift5_Garage
 {
-    public class UserInterface
+    public class UserInterface : IUI
     {
-        internal void PrintMainMenu(bool exist)
+        public void PrintMainMenu(bool exist)
         {
             MenuClear();
             Console.SetCursorPosition(0, 0);
@@ -44,7 +44,7 @@ namespace Uppgift5_Garage
 
         }
 
-        internal void PrintCreateGarage()
+        public void PrintCreateGarage()
         {
             MenuClear();
             ColorsDefault();
@@ -71,11 +71,11 @@ namespace Uppgift5_Garage
                     PrintMessage();
                     Console.WriteLine($"Your new garage contains {x} parking lots.");
                     CursorPositionUserInput();
-                    
-                    
+
+
                     break;
                 }
-                else 
+                else
                 {
                     MsgClear();
                     PrintMessage();
@@ -84,12 +84,11 @@ namespace Uppgift5_Garage
             }
         }
 
-        internal void DrawGarage(bool garageExist, Garage garage, List<Vehicle> vehicleList)
+        public void DrawGarage(bool garageExist, Garage garage, List<Vehicle> vehicleList)
         {
             //IHandler space;
             //Console.SetCursorPosition(0, 12);
-            //HeadLine();
-
+            //HeadLine();           
             CursorPositionGarage();
             ColorsDefault();
             Console.WriteLine("Garage Status");
@@ -112,8 +111,8 @@ namespace Uppgift5_Garage
                     IHandler space = parkingSpot;
                     ArgumentNullException.ThrowIfNull(parkingSpot, nameof(parkingSpot));
 
-                    
-                    
+
+
                     foreach (var vehicle in vehicleList)
                     {
                         if (vehicle.VehiclePosition == spotPosition)
@@ -134,7 +133,7 @@ namespace Uppgift5_Garage
         {
 
         }
-        internal void UnserInput(bool garageExist)
+        public void UnserInput(bool garageExist)
         {
             CursorPositionUserInput();
             Console.WriteLine("                                             ");
@@ -183,61 +182,55 @@ namespace Uppgift5_Garage
 
         }
 
-        private void MenuClear()
+        public void MenuClear()
         {
             for (int i = 1; i < 11; i++)
             {
                 Console.SetCursorPosition(0, i);
                 Console.Write("                                                ");
-            }                       
+            }
         }
-        private void MsgClear()
+        public void MsgClear()
         {
             PrintMessage();
             Console.WriteLine("                                                ");
         }
-        private void MsgWrongMenuChoice()
+        public void MsgWrongMenuChoice()
         {
             PrintMessage();
             Console.WriteLine("Please select something from the menu.");
         }
 
-        private void CursorPositionUserInput()
+        public void CursorPositionUserInput()
         {
             Console.SetCursorPosition(13, 9);
         }
-        private void CursorPositionGarage()
+        public void CursorPositionGarage()
         {
             Console.SetCursorPosition(1, 14);
         }
-        internal void PrintMessage()
+        public void PrintMessage()
         {
             Console.SetCursorPosition(2, 12);
             //MsgClear();
             Console.ForegroundColor = ConsoleColor.Yellow;
         }
 
-        private void ColorsDefault()
+        public void ColorsDefault()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        private void ColorsInfo()
+        public void ColorsInfo()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Cyan;
         }
-        private void ColorsMenu()
+        public void ColorsMenu()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
-        }
-
-        private void ColorsError()
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Red;
         }
     }
 }

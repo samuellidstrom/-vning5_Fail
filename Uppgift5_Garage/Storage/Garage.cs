@@ -6,23 +6,23 @@ namespace Uppgift5_Garage.Storage
 {
     public class Garage
     {
-        private ParkingLot[] parkingSpots;
+        private ParkingLot[] parkingLots;
         public int Size { get; }
 
         public Garage(int size)
         {
             Size = size;
-            parkingSpots = new ParkingLot[size];
+            parkingLots = new ParkingLot[size];
 
             for (int p = 0; p < size; p++)
             {
-                parkingSpots[p] = new ParkingLot();
+                parkingLots[p] = new ParkingLot();
             }
         }
         [return: MaybeNull]
-        internal ParkingLot GetSpot(int index)
+        public ParkingLot GetSpot(int index)
         {
-            return (index < 0 || index > parkingSpots.Length) ? null : parkingSpots[index];
+            return (index < 0 || index > parkingLots.Length) ? null : parkingLots[index];
         }
     }
 }

@@ -3,18 +3,23 @@ namespace Uppgift5_Garage
 {
     internal class Operations
     {
-        private Garage garage = null!;
+        public Garage garage = null!;
         private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
         bool garageExist = false;
-        UserInterface userInterface = new UserInterface();        
-
-        internal void Run()
+        public IUI userInterface;
+        //private IUI userInterface = new UserInterface();
+        public void Run()
         {            
             Initialize();            
             Execute();
         }
-        private void Execute()
+
+        public Operations(IUI userInterface)
+        {
+            this.userInterface = userInterface;
+        }
+        internal void Execute()
         {
             bool running = true;
             do

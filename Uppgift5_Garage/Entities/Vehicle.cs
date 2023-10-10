@@ -2,7 +2,7 @@
 
 namespace Uppgift5_Garage.Entities
 {
-    internal class Vehicle : IHandler
+    public class Vehicle : IHandler
     {
         public string Color { get; set; }
         public string LicensePlate { get; set; }

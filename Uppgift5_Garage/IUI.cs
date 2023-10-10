@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Uppgift5_Garage
+﻿namespace Uppgift5_Garage
 {
-    internal interface IUI
+    public interface IUI
     {
-        string GetInput();
-
-        void Print(string message);
+        void ColorsDefault();
+        void ColorsInfo();
+        void ColorsMenu();
+        void CursorPositionGarage();
+        void CursorPositionUserInput();
+        void DrawGarage(bool garageExist, Garage garage, List<Vehicle> vehicleList);
+        void MenuClear();
+        void MsgClear();
+        void MsgWrongMenuChoice();
+        void PrintCreateGarage();
+        void PrintMainMenu(bool exist);
+        void PrintMessage();
+        void PrintVehicle(string message);
+        void UnserInput(bool garageExist);
     }
 }
