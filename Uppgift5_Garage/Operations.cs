@@ -3,7 +3,8 @@ namespace Uppgift5_Garage
 {
     internal class Operations
     {
-        public Garage garage = null!;
+        public IGarage garage;
+        //public IGarage garage = null!;
         private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
         bool garageExist = false;
@@ -15,10 +16,13 @@ namespace Uppgift5_Garage
             Execute();
         }
 
-        public Operations(IUI userInterface)
+        public Operations(IUI userInterface, IGarage garage)
         {
             this.userInterface = userInterface;
         }
+
+
+
         internal void Execute()
         {
             bool running = true;
@@ -43,9 +47,9 @@ namespace Uppgift5_Garage
         {
             //ToDo: Fixa så man kan skriva in hur stort garage man vill ha
 
-            garage = new Garage(10);            
+            //garage = new Garage(10);            
             
-            var vSpot = garage.GetSpot(0);
+            //var vSpot = garage.GetSpot(0);
 
             Vehicle vehicle1 = new Airplane { Color = "Blue", LicensePlate = "Abs452", NoOfEngines = 6, NoOfWheels = 4, VehiclePosition = 1 };
             Vehicle vehicle2 = new Motorcycle { Color = "Red", LicensePlate = "Afw756", NoOfWheels = 2, CylinderVolume = 1600, VehiclePosition = 3 };

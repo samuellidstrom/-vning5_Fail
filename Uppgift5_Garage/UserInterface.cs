@@ -84,7 +84,7 @@ namespace Uppgift5_Garage
             }
         }
 
-        public void DrawGarage(bool garageExist, Garage garage, List<Vehicle> vehicleList)
+        public void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList)
         {
             //IHandler space;
             //Console.SetCursorPosition(0, 12);

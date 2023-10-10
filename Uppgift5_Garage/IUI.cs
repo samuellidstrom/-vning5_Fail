@@ -7,7 +7,7 @@
         void ColorsMenu();
         void CursorPositionGarage();
         void CursorPositionUserInput();
-        void DrawGarage(bool garageExist, Garage garage, List<Vehicle> vehicleList);
+        void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList);
         void MenuClear();
         void MsgClear();
         void MsgWrongMenuChoice();

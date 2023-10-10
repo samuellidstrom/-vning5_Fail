@@ -13,7 +13,8 @@ namespace Uppgift5_Garage
         
         static void Main(string[] args)
         {
-            var operations = new Operations(new UserInterface());
+            var garage = new Garage(10);
+            var operations = new Operations(new UserInterface(), garage);
             operations.Run();
             
             Console.WriteLine("Program avslutat");
