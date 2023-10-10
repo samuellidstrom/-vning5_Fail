@@ -108,10 +108,12 @@ namespace Uppgift5_Garage
 
                 for (int spotPosition = 0; spotPosition < garage.Size; spotPosition++)
                 {
-                    ParkingSpot parkingSpot = garage.GetSpot(spotPosition);
+                    ParkingLot parkingSpot = garage.GetSpot(spotPosition);
                     IHandler space = parkingSpot;
                     ArgumentNullException.ThrowIfNull(parkingSpot, nameof(parkingSpot));
 
+                    
+                    
                     foreach (var vehicle in vehicleList)
                     {
                         if (vehicle.VehiclePosition == spotPosition)
@@ -146,7 +148,7 @@ namespace Uppgift5_Garage
             {
                 char inputChar = input[0];
 
-                if (garageExist)
+                if (input.Length == 1 && garageExist == true)
                 {
                     switch (inputChar)
                     {
@@ -158,7 +160,7 @@ namespace Uppgift5_Garage
                             break;
                     }
                 }
-                else
+                else if (input.Length == 1 && garageExist == false)
                 {
                     switch (inputChar)
                     {
@@ -170,6 +172,10 @@ namespace Uppgift5_Garage
                             MsgWrongMenuChoice();
                             break;
                     }
+                }
+                else
+                {
+                    MsgWrongMenuChoice();
                 }
 
 

@@ -1,6 +1,6 @@
 ﻿namespace Uppgift5_Garage.Storage
 {
-    internal class ParkingSpot : IHandler
+    public class ParkingLot : IHandler
     {
         public string Symbol => "O";
         public ConsoleColor SpotColor { get; } = ConsoleColor.Green;
