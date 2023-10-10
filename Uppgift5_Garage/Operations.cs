@@ -7,16 +7,21 @@ namespace Uppgift5_Garage
         //public IGarage garage = null!;
         private List<Vehicle> vehicleList = new List<Vehicle>();
         private Vehicle vehicle = null!;
-        bool garageExist = false;
+        bool garageExist = true;
         public IUI userInterface;
         //private IUI userInterface = new UserInterface();
-        public void Run()
-        {            
-            Initialize();            
+        public void Run(int x)
+        {
+            int garageSize = x;
+            Initialize(x);
             Execute();
         }
 
-        public Operations(IUI userInterface, IGarage garage)
+        //public Operations(IUI userInterface, IGarage garage)
+        //{
+        //    this.userInterface = userInterface;
+        //}
+        public Operations(IUI userInterface)
         {
             this.userInterface = userInterface;
         }
@@ -43,12 +48,12 @@ namespace Uppgift5_Garage
             } while (running);
         }
 
-         public void Initialize()
+        public void Initialize(int garageSize)
         {
             //ToDo: Fixa så man kan skriva in hur stort garage man vill ha
 
-            //garage = new Garage(10);            
-            
+            garage = new Garage(garageSize);
+
             //var vSpot = garage.GetSpot(0);
 
             Vehicle vehicle1 = new Airplane { Color = "Blue", LicensePlate = "Abs452", NoOfEngines = 6, NoOfWheels = 4, VehiclePosition = 1 };

@@ -6,6 +6,7 @@ namespace Uppgift5_Garage
 {
     public class UserInterface : IUI
     {
+
         public void PrintMainMenu(bool exist)
         {
             MenuClear();
