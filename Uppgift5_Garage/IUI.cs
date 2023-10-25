@@ -2,6 +2,7 @@
 {
     public interface IUI
     {
+        void CreateGarge(int garageSize);
         void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList);
         void MsgWrongMenuChoice();
         void PrintMainMenu(bool exist);

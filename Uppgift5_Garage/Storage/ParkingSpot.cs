@@ -4,9 +4,20 @@
     {
         public string Symbol => "O";
         public ConsoleColor SpotColor { get; } = ConsoleColor.Green;
-        //public ParkingSpot()
-        //{
-        //    SpotColor = ConsoleColor.Green;
-        //}
+
+        public Vehicle? Vehicle { get; set; }
+
+
+        public ParkingLot(Vehicle? vehicle)
+        {
+            Vehicle = vehicle;
+        }
+
+        public void Clear()
+        {
+            Vehicle = default(Vehicle);
+        }
+
+
     }
 }

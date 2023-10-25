@@ -4,9 +4,35 @@ using Uppgift5_Garage.Entities;
 
 namespace Uppgift5_Garage
 {
-    public class UserInterface : IUI        
-    {        
-        public void PrintMainMenu(bool exist)
+    public class UserInterface //: IUI        
+    {
+        private IGarage garage = null!;
+        private bool exist = false;
+       // private List<Vehicle> vehicleList =  new List<Vehicle>();
+        private bool autoDone = false;
+
+        private void ListAllVehicles()
+        {
+            Console.SetCursorPosition(0, 20);
+            Console.WriteLine("Vehicles currently parked in your garage:");
+            VisualHandler.ColorsMenu();
+            int y = 21;
+            foreach (var vehicle in garage)
+            {
+                Console.SetCursorPosition(1, y);
+                if (garage.Count() <= garage.Size)
+                {
+                    Console.WriteLine(vehicle.AllInfo());
+                }
+                else
+                {
+                    break;
+                }
+                y++;
+            }
+        }
+
+        public void PrintMainMenu()
         {            
             VisualHandler.MenuClear();
             Console.SetCursorPosition(0, 0);
@@ -35,17 +61,16 @@ namespace Uppgift5_Garage
             Console.WriteLine(" User input:\n");
             Console.WriteLine(" Message to user");
         }
-        public void DrawGarage(bool garageExist, IGarage garage, List<Vehicle> vehicleList)
+        public void DrawGarage()
         {          
             VisualHandler.CursorPositionGarage();
             VisualHandler.ColorsDefault();
             Console.WriteLine("Garage Status");
             VisualHandler.ColorsInfo();
-            if (garageExist)
-            {
+           
                 VisualHandler.GarageClear();
                 VisualHandler.CursorPositionGarage();
-                Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - vehicleList.Count}");
+                Console.WriteLine($"  Capacity: {garage.Size} slots | Free lots: {garage.Size - garage.Count()}");
                 Console.Write("\n  Parking lots overview:\n   Free: ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(" O");
@@ -60,7 +85,7 @@ namespace Uppgift5_Garage
                     IHandler space = parkingSpot;
                     ArgumentNullException.ThrowIfNull(parkingSpot, nameof(parkingSpot));
 
-                    foreach (var vehicle in vehicleList)
+                    foreach (var vehicle in garage)
                     {
                         if (vehicle.VehiclePosition == spotPosition)
                         {
@@ -71,12 +96,11 @@ namespace Uppgift5_Garage
                     Console.ForegroundColor = space.SpotColor;
                     Console.Write(space?.Symbol);
                 }
-            }
-            else { Console.WriteLine("  No garage exists at the moment"); }
+            
 
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public void UserInput(bool garageExist, List<Vehicle> allVehicles, AutoDone autoDone, IGarage garage)
+        public void UserInput()
         {            
             VisualHandler.CursorPositionUserInput();
             Console.WriteLine("                                             ");
@@ -90,31 +114,31 @@ namespace Uppgift5_Garage
             {
                 char inputChar = input[0];
 
-                if (input.Length == 1 && garageExist == true)
+                if (input.Length == 1)
                 {
                     switch (inputChar)
                     {
                         case '1':
                             VisualHandler.MsgClear();
-                            if (allVehicles.Count < 1)
+                            if (garage.Count() < 1)
                             {
                                 VisualHandler.PrintMessage();
                                 Console.WriteLine("Your garage is empty at the moment.");
                             }
                             else
                             {
-                                ListAllVehicles listAllVehicles = new ListAllVehicles(allVehicles, garage);
+                                ListAllVehicles();
                             }
                             break;
                         case '2':                                                       
-                            if (autoDone.Done == false)
+                            if (autoDone == false)
                             {                                
-                                AutoAddVehicles autoAddVehicles = new AutoAddVehicles(allVehicles, garage);
+                                AutoAddVehicles autoAddVehicles = new AutoAddVehicles(garage);
                                 VisualHandler.PrintMessage();
                                 Console.WriteLine("You sucsessfully added six vehicles to the garage.");
-                                autoDone.Done = true;
+                                autoDone = true;
                             }                            
-                            else if (autoDone.Done == true)
+                            else if (autoDone == true)
                             {
                                VisualHandler.PrintMessage();
                                Console.WriteLine("Auto-generated vehicles already added.");
@@ -135,6 +159,12 @@ namespace Uppgift5_Garage
         {
             VisualHandler.PrintMessage();
             Console.WriteLine("Please select something from the menu.");
-        }       
+        }
+
+        public void CreateGarge(int garageSize)
+        {
+            garage = new Garage(garageSize);
+            exist = true;
+        }
     }
 }
